@@ -1,8 +1,0 @@
-{
-  "name": "Kubera",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "vue-vite",
-  "id": "e894916c"
-}
