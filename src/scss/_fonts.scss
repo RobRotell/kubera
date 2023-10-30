@@ -1,0 +1,31 @@
+@font-face {
+	font-display: swap;
+	font-family: $fontSans;
+	font-style: normal;
+	font-weight: $fontWeightNormal;
+	src: url('../fonts/source-sans-pro-latin-400-normal.woff2') format('woff2');
+}
+
+@font-face {
+	font-display: swap;
+	font-family: $fontSans;
+	font-style: normal;
+	font-weight: $fontWeightBold;
+	src: url('../fonts/source-sans-pro-latin-700-normal.woff2') format('woff2');
+}
+
+@font-face {
+	font-display: swap;
+	font-family: $fontMono;
+	font-style: normal;
+	font-weight: $fontWeightNormal;
+	src: url('../fonts/source-code-pro-latin-400-normal.woff2') format('woff2');
+}
+
+@font-face {
+	font-display: swap;
+	font-family: $fontMono;
+	font-style: normal;
+	font-weight: $fontWeightBold;
+	src: url('../fonts/source-code-pro-latin-700-normal.woff2') format('woff2');
+}

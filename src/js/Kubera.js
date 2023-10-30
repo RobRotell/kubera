@@ -26,8 +26,8 @@ export class Kubera {
 		this.data = reactive({
 			subtotal: null,
 			tipPercentage: 18,
-			tipAmount: 0,
-			totalAmount: 0,
+			tipAmount: undefined,
+			totalAmount: undefined,
 		})
 
 		this.states = reactive({
@@ -53,14 +53,15 @@ export class Kubera {
 		} else {
 
 			// calculate tip amount
-			const tipAmount = ( subtotal * ( tipPercentage / 100 ) ).toFixed( 2 )
+			let tipAmount = ( subtotal * ( tipPercentage / 100 ) ).toFixed( 2 )
 
-			this.data.tipAmount = parseFloat( tipAmount )
+			tipAmount = parseFloat( tipAmount )
 
 			// apply tip amount to subtotal to get *total* total
-			const totalAmount = ( subtotal + this.data.tipAmount ).toFixed( 2 )
+			const totalAmount = ( subtotal + tipAmount ).toFixed( 2 )
 
-			this.data.totalAmount = parseFloat( totalAmount )
+			this.data.tipAmount = `$${tipAmount.toFixed( 2 )}`
+			this.data.totalAmount = `$${totalAmount}`
 		}
 	}
 
@@ -71,8 +72,8 @@ export class Kubera {
 	 * @return {void}
 	 */
 	clearAmounts() {
-		this.data.tipAmount = 0
-		this.data.totalAmount = 0
+		this.data.tipAmount = undefined
+		this.data.totalAmount = undefined
 	}
 
 
@@ -151,47 +152,26 @@ export class Kubera {
 
 
 	/**
-	 * Render app through ArrowJS html template literal
-	 *
-	 * @param {HTMLElement} node - HTML node
-	 * @return {void}
-	 */
-	renderApp( node ) {
-		html`
-			<div class="${ () => this.getInputSubtotalClasses() }">
-				${this.renderInputSubtotal.bind( this )}
-			</div>
-			<div class="tip-percentages">
-				<div class="tip-percentage">
-					${[ 18, 20 ].map( amount => this.renderBtnTipPercentage( amount ) )}
-					${this.renderInputTipPercentage.bind( this )}
-				</div>
-			</div>
-
-			<div class="tip-amount">
-				${this.renderInputTipAmount.bind( this )}
-			</div>
-
-			<div class="total-amount">
-				${this.renderInputTotalAmount.bind( this )}
-			</div>
-		`( node )
-	}
-
-
-	/**
 	 * Renders tip amount input
 	 *
 	 * @return {function} Template
 	 */
 	renderInputTipAmount() {
 		return html`
-			<input
-				type="text"
-				class="tip-amount__value"
-				readonly
-				value="${this.data.tipAmount}"
-			/>
+			<label 
+				class="block-amount__label tip-amount__label"
+				for="kubera_tip"
+			>
+				<span class="block-amount__label__text tip-amount__label__text">Tip</span>
+				<input
+					id="kubera_tip"
+					class="block-amount__value tip-amount__value"
+					type="text"
+					readonly
+					value="${this.data.tipAmount}"
+					placeholder="TBD &hellip;"
+				/>
+			</label>
 		`
 	}
 
@@ -204,12 +184,20 @@ export class Kubera {
 	 */
 	renderInputTotalAmount() {
 		return html`
-			<input
-				type="text"
-				class="total-amount__value"
-				readonly
-				value="${this.data.totalAmount}"
-			/>
+			<label 
+				class="block-amount__label tip-amount__label"
+				for="kubera_total"
+			>
+				<span class="block-amount__label__text tip-amount__label__text">Total</span>
+				<input
+					id="kubera_total"
+					type="text"
+					class="block-amount__value total-amount__value"
+					readonly
+					value="${this.data.totalAmount}"
+					placeholder="TBD &hellip;"
+				/>
+			</label>
 		`
 	}
 
@@ -221,13 +209,24 @@ export class Kubera {
 	 */
 	renderInputSubtotal() {
 		return html`
-			<input
-				@input="${this.handleInputSubtotal.bind( this )}"
-				type="number"
-				class="subtotal__input"
-				step="0.01"
-				placeholder="Enter subtotal &hellip;"
-			/>
+			<div 
+				class="${ () => this.getInputSubtotalClasses() }"
+			>
+				<label 
+					class="subtotal__label"
+					for="kubera_subtotal"
+				>
+					<span class="subtotal__label__text">Subtotal</span>
+					<input
+						id="kubera_subtotal"
+						class="subtotal__input"
+						@input="${this.handleInputSubtotal.bind( this )}"
+						type="number"
+						step="0.01"
+						placeholder="Enter subtotal &hellip;"
+					/>
+				</label>
+			</div>
 		`
 	}
 
@@ -259,7 +258,7 @@ export class Kubera {
 	 * @param {number} amount - Button percentage amount
 	 * @return {function} Template
 	 */
-	renderBtnTipPercentage( amount ) {
+	renderBtnStaticTipPercentage( amount ) {
 		return html`
 			<button
 				@click="${ () => this.handleUserClickTipBtn( amount ) }"
@@ -268,7 +267,7 @@ export class Kubera {
 			>
 				<span
 					class="tip-percentage__value"
-				>${amount}</span>
+				>${amount}%</span>
 			</button>
 		`
 	}
@@ -303,7 +302,7 @@ export class Kubera {
 	 *
 	 * @return {function} Template
 	 */
-	renderInputTipPercentage() {
+	renderInputDynamicTipPercentage() {
 		return html`
 			<span
 				class="${ () => this.getInputTipPercentageClasses() }"
@@ -315,9 +314,41 @@ export class Kubera {
 					min="1"
 					max="99"
 					step="1"
+					placeholder="Custom tip &hellip;"
 				/>
 			</span>
 		`
+	}
+
+
+	/**
+	 * Render app through ArrowJS html template literal
+	 *
+	 * @param {HTMLElement} node - HTML node
+	 * @return {void}
+	 */
+	renderApp( node ) {
+		html`
+			<section class="tip-subtotal">
+				${this.renderInputSubtotal.bind( this )}
+			</section>
+
+			<section class="tip-percentages">
+				<p class="tip-percentages__headline">Tip Amount</p>
+				<div class="tip-percentages__options">
+					${[ 18, 20 ].map( amount => this.renderBtnStaticTipPercentage( amount ) )}
+					${this.renderInputDynamicTipPercentage.bind( this )}
+				</div>
+			</section>
+
+			<section class="block-amount tip-amount">
+				${this.renderInputTipAmount.bind( this )}
+			</section>
+
+			<section class="block-amount total-amount">
+				${this.renderInputTotalAmount.bind( this )}
+			</section>
+		`( node )
 	}
 
 }

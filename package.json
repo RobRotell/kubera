@@ -23,6 +23,8 @@
 		"vite": "^4.4.5"
 	},
 	"dependencies": {
-		"@arrow-js/core": "^1.0.0-alpha.9"
+		"@arrow-js/core": "^1.0.0-alpha.9",
+		"modern-normalize": "^2.0.0",
+		"normalize.css": "^8.0.1"
 	}
 }

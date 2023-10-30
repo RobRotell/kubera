@@ -1,0 +1,14 @@
+html,
+body {
+	height: 100vh;
+	font-family: $fontSans;
+	font-weight: $fontWeightNormal;
+	font-size: pxToRem( 16 );
+}
+
+.body {
+	display: flex;
+	place-items: center;
+	place-content: center;
+	padding: pxToRem( 32 ) pxToRem( 24 );
+}

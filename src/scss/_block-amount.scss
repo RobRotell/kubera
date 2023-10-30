@@ -1,0 +1,35 @@
+.block-amount {
+	padding: pxToRem( 24 );
+	border-radius: pxToRem( 16 );
+	background-color: black;
+
+	&:not(:last-of-type) {
+		margin-bottom: pxToRem( 16 );
+	}
+
+	&__label {
+		display: flex;
+		flex-direction: column;
+
+		&__text {
+			font-weight: $fontWeightBold;
+			margin-bottom: pxToRem( 6 );
+			font-size: pxToRem( 18 );
+			letter-spacing: pxToRem( 4 );
+			text-transform: uppercase;
+			color: #999;
+		}
+	}
+
+	&__value {
+		font-family: $fontMono;
+		font-size: pxToRem( 48 );
+		background-color: transparent;
+		border: none;
+		color: white;
+
+		&::placeholder {
+			font-family: $fontSans;
+		}
+	}
+}
