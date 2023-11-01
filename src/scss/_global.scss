@@ -1,27 +1,35 @@
-* {
-	outline: 1px solid red;
-}
-
 html,
 body {
 	height: 100vh;
 	font-family: $fontSans;
 	font-weight: $fontWeightNormal;
-	font-size: pxToRem( 16 );
+	font-size: pxToRem(16);
 }
 
 .body {
 	display: flex;
 	place-items: center;
 	place-content: center;
-	padding: pxToRem( 12 );
+	padding: pxToRem(12);
+	background-color: $colorTan;
 }
 
 .headline {
 	margin-top: 0;
-	margin-bottom: pxToRem( 6 );
+	margin-bottom: pxToRem(6);
 	font-weight: $fontWeightBold;
-	font-size: pxToRem( 18 );
-	letter-spacing: pxToRem( 4 );
-	text-transform: uppercase;	
+	font-size: pxToRem(18);
+	letter-spacing: pxToRem(4);
+	text-transform: uppercase;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type='number'] {
+	-moz-appearance: textfield;
+	appearance: textfield;
 }

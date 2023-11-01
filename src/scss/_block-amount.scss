@@ -1,7 +1,16 @@
 .block-amount {
 	padding: pxToRem( 24 );
 	border-radius: $roundBorderRadius;
-	background-color: black;
+	background-color: $colorGreenLight;
+
+	&.is-invalid {
+		background-color: $colorPink;
+	}
+
+	&--subtotal {
+		padding: pxToRem( 36 ) pxToRem( 24 );
+		background-color: $colorGreenDark;
+	}
 
 	&:not(:last-of-type) {
 		margin-bottom: pxToRem( 16 );
@@ -12,7 +21,11 @@
 		flex-direction: column;
 
 		&__text {
-			color: #999;
+			color: $colorTanNeutral;
+
+			&--subtotal {
+				font-size: pxToRem( 24 );
+			}
 		}
 	}
 
@@ -22,10 +35,16 @@
 		font-weight: 700;
 		background-color: transparent;
 		border: none;
-		color: white;
+		color: $colorTan;
+
+		&--subtotal {
+			font-size: pxToRem( 60 );
+			outline: none;
+		}
 
 		&::placeholder {
 			font-family: $fontSans;
+			color: $colorTanDark;
 		}
 	}
 }

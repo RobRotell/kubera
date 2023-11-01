@@ -20,20 +20,34 @@
 		place-items: center;
 		padding: pxToRem( 24 ) pxToRem( 6 );
 		font-family: $fontMono;
+		background-color: $colorGreenNeutral;
 		border-radius: $roundBorderRadius;
 		border: none;
 		cursor: pointer;
+		transition: background-color 0.2s linear;
 
 		&__value,
 		&__input {
 			font-weight: $fontWeightBold;
-			font-size: pxToRem( 24 );			
+			font-size: pxToRem( 24 );
+			color: $colorTan;
 		}
 
 		&__input {
 			border: none;
 			width: 100%;
 			text-align: center;
+			background-color: transparent;
+			outline: none;
+		}
+
+		&:hover,
+		&.is-selected {
+			background-color: $colorGreenDark;
+		}
+
+		&.is-invalid {
+			background-color: #A68587;
 		}
 	}
 }

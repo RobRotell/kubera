@@ -132,40 +132,20 @@ export class Kubera {
 
 
 	/**
-	 * Create string for classes for subtotal input
-	 *
-	 * Because of how ArrowJS operates, this needs to be a separate function outside of the renderer
-	 *
-	 * @return {string} Button classes
-	 */
-	getInputSubtotalClasses() {
-		const nodeClasses = [
-			'subtotal'
-		]
-
-		if ( this.states.invalidSubtotal ) {
-			nodeClasses.push( 'is-invalid' )
-		}
-
-		return nodeClasses.join( ' ' )
-	}
-
-
-	/**
 	 * Renders tip amount input
 	 *
 	 * @return {function} Template
 	 */
 	renderInputTipAmount() {
 		return html`
-			<label 
-				class="block-amount__label tip-amount__label"
+			<label
+				class="block-amount__label"
 				for="kubera_tip"
 			>
 				<h3 class="block-amount__label__text headline">Tip</h3>
 				<input
 					id="kubera_tip"
-					class="block-amount__value tip-amount__value"
+					class="block-amount__value"
 					type="text"
 					readonly
 					value="${this.data.tipAmount}"
@@ -184,15 +164,15 @@ export class Kubera {
 	 */
 	renderInputTotalAmount() {
 		return html`
-			<label 
-				class="block-amount__label tip-amount__label"
+			<label
+				class="block-amount__label"
 				for="kubera_total"
 			>
 				<h3 class="block-amount__label__text headline">Total</h3>
 				<input
 					id="kubera_total"
 					type="text"
-					class="block-amount__value total-amount__value"
+					class="block-amount__value"
 					readonly
 					value="${this.data.totalAmount}"
 					placeholder="TBD &hellip;"
@@ -209,24 +189,20 @@ export class Kubera {
 	 */
 	renderInputSubtotal() {
 		return html`
-			<div 
-				class="${ () => this.getInputSubtotalClasses() }"
+			<label
+				class="block-amount__label block-amount__label--subtotal"
+				for="kubera_subtotal"
 			>
-				<label 
-					class="subtotal__label"
-					for="kubera_subtotal"
-				>
-					<h3 class="subtotal__label__text headline">Subtotal</h3>
-					<input
-						id="kubera_subtotal"
-						class="subtotal__input"
-						@input="${this.handleInputSubtotal.bind( this )}"
-						type="number"
-						step="0.01"
-						placeholder="Enter subtotal &hellip;"
-					/>
-				</label>
-			</div>
+				<h3 class="block-amount__label__text block-amount__label__text--subtotal headline">Subtotal</h3>
+				<input
+					id="kubera_subtotal"
+					class="block-amount__value block-amount__value--subtotal"
+					@input="${this.handleInputSubtotal.bind( this )}"
+					type="number"
+					step="0.01"
+					placeholder="Enter subtotal &hellip;"
+				/>
+			</label>
 		`
 	}
 
@@ -324,6 +300,27 @@ export class Kubera {
 
 
 	/**
+	 * Create string for classes for subtotal input
+	 *
+	 * Because of how ArrowJS operates, this needs to be a separate function outside of the renderer
+	 *
+	 * @return {string} Button classes
+	 */
+	getSubtotalSectionClasses() {
+		const nodeClasses = [
+			'block-amount',
+			'block-amount--subtotal',
+		]
+
+		if ( this.states.invalidSubtotal ) {
+			nodeClasses.push( 'is-invalid' )
+		}
+
+		return nodeClasses.join( ' ' )
+	}
+
+
+	/**
 	 * Render app through ArrowJS html template literal
 	 *
 	 * @param {HTMLElement} node - HTML node
@@ -331,7 +328,7 @@ export class Kubera {
 	 */
 	renderApp( node ) {
 		html`
-			<section class="tip-subtotal">
+			<section class="${ () => this.getSubtotalSectionClasses() }">
 				${this.renderInputSubtotal.bind( this )}
 			</section>
 
@@ -343,11 +340,11 @@ export class Kubera {
 				</div>
 			</section>
 
-			<section class="block-amount tip-amount">
+			<section class="block-amount block-amount--tip">
 				${this.renderInputTipAmount.bind( this )}
 			</section>
 
-			<section class="block-amount total-amount">
+			<section class="block-amount block-amount--total">
 				${this.renderInputTotalAmount.bind( this )}
 			</section>
 		`( node )

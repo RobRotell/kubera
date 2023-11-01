@@ -7,4 +7,6 @@
 	max-height: pxToRem( 1000 );
 	padding: pxToRem( 32 );
 	border-radius: $roundBorderRadius;
+	background-color: $colorGreenReallyLight;
+	border: pxToRem( 4 ) solid $colorGreenLight;
 }
