@@ -4,5 +4,8 @@ $baseFontSize: #{$baseSize}px;
 $fontSans: 'Source Sans';
 $fontMono: 'Source Code';
 
+$fontWeightLight: 300;
 $fontWeightNormal: 400;
 $fontWeightBold: 700;
+
+$roundBorderRadius: pxToRem( 12 );

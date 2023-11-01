@@ -1,3 +1,7 @@
+* {
+	outline: 1px solid red;
+}
+
 html,
 body {
 	height: 100vh;
@@ -10,5 +14,14 @@ body {
 	display: flex;
 	place-items: center;
 	place-content: center;
-	padding: pxToRem( 32 ) pxToRem( 24 );
+	padding: pxToRem( 12 );
+}
+
+.headline {
+	margin-top: 0;
+	margin-bottom: pxToRem( 6 );
+	font-weight: $fontWeightBold;
+	font-size: pxToRem( 18 );
+	letter-spacing: pxToRem( 4 );
+	text-transform: uppercase;	
 }

@@ -1,0 +1,39 @@
+.tip-percentages {
+	margin-top: pxToRem( 24 );
+	margin-bottom: pxToRem( 24 );
+
+	&__headline {
+
+	}
+
+	&__options {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		gap: pxToRem( 16 );
+
+	}
+
+	&__option {
+		display: flex;
+		flex: 1 0;
+		place-content: center;
+		place-items: center;
+		padding: pxToRem( 24 ) pxToRem( 6 );
+		font-family: $fontMono;
+		border-radius: $roundBorderRadius;
+		border: none;
+		cursor: pointer;
+
+		&__value,
+		&__input {
+			font-weight: $fontWeightBold;
+			font-size: pxToRem( 24 );			
+		}
+
+		&__input {
+			border: none;
+			width: 100%;
+			text-align: center;
+		}
+	}
+}
