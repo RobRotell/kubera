@@ -1,0 +1,8 @@
+@mixin headline {
+	margin-top: 0;
+	margin-bottom: pxToRem(6);
+	font-weight: $fontWeightBold;
+	font-size: pxToRem(18);
+	letter-spacing: pxToRem(4);
+	text-transform: uppercase;
+}

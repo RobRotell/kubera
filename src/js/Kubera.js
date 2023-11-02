@@ -142,7 +142,7 @@ export class Kubera {
 				class="block-amount__label"
 				for="kubera_tip"
 			>
-				<h3 class="block-amount__label__text headline">Tip</h3>
+				<h3 class="block-amount__label__text">Tip</h3>
 				<input
 					id="kubera_tip"
 					class="block-amount__value"
@@ -168,7 +168,7 @@ export class Kubera {
 				class="block-amount__label"
 				for="kubera_total"
 			>
-				<h3 class="block-amount__label__text headline">Total</h3>
+				<h3 class="block-amount__label__text">Total</h3>
 				<input
 					id="kubera_total"
 					type="text"
@@ -193,14 +193,14 @@ export class Kubera {
 				class="block-amount__label block-amount__label--subtotal"
 				for="kubera_subtotal"
 			>
-				<h3 class="block-amount__label__text block-amount__label__text--subtotal headline">Subtotal</h3>
+				<h3 class="block-amount__label__text block-amount__label__text--subtotal">Subtotal</h3>
 				<input
 					id="kubera_subtotal"
 					class="block-amount__value block-amount__value--subtotal"
 					@input="${this.handleInputSubtotal.bind( this )}"
 					type="number"
 					step="0.01"
-					placeholder="Enter subtotal &hellip;"
+					placeholder="Subtotal &hellip;"
 				/>
 			</label>
 		`
@@ -333,7 +333,7 @@ export class Kubera {
 			</section>
 
 			<section class="tip-percentages">
-				<h3 class="tip-percentages__headline headline">Tip Amount</h3>
+				<!-- <h3 class="tip-percentages__headline">Tip Amount</h3> -->
 				<div class="tip-percentages__options">
 					${[ 18, 20 ].map( amount => this.renderBtnStaticTipPercentage( amount ) )}
 					${this.renderInputDynamicTipPercentage.bind( this )}

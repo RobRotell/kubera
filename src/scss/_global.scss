@@ -10,17 +10,24 @@ body {
 	display: flex;
 	place-items: center;
 	place-content: center;
-	padding: pxToRem(12);
-	background-color: $colorTan;
-}
+	padding: pxToRem( 16 );
+	background-color: $colorGrayLight;
 
-.headline {
-	margin-top: 0;
-	margin-bottom: pxToRem(6);
-	font-weight: $fontWeightBold;
-	font-size: pxToRem(18);
-	letter-spacing: pxToRem(4);
-	text-transform: uppercase;
+	&__pic {
+		position: absolute;
+		inset: 0;
+		display: block;
+		width: 100%;
+		height: 100%;
+		z-index: -100;
+
+		&__img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
 }
 
 input::-webkit-outer-spin-button,

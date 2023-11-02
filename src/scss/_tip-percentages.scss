@@ -3,14 +3,14 @@
 	margin-bottom: pxToRem( 24 );
 
 	&__headline {
-
+		@include headline;
+		color: $colorGrayLight;
 	}
 
 	&__options {
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr;
 		gap: pxToRem( 16 );
-
 	}
 
 	&__option {
@@ -20,7 +20,7 @@
 		place-items: center;
 		padding: pxToRem( 24 ) pxToRem( 6 );
 		font-family: $fontMono;
-		background-color: $colorGreenNeutral;
+		background-color: $colorGreenDark;
 		border-radius: $roundBorderRadius;
 		border: none;
 		cursor: pointer;
@@ -30,24 +30,25 @@
 		&__input {
 			font-weight: $fontWeightBold;
 			font-size: pxToRem( 24 );
-			color: $colorTan;
+			color: white;
 		}
 
 		&__input {
-			border: none;
 			width: 100%;
 			text-align: center;
 			background-color: transparent;
 			outline: none;
+			border: none;
+			cursor: pointer;
 		}
 
 		&:hover,
 		&.is-selected {
-			background-color: $colorGreenDark;
+			background-color: $colorGreenLight;
 		}
 
 		&.is-invalid {
-			background-color: #A68587;
+			background-color: $colorRed;
 		}
 	}
 }

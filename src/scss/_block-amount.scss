@@ -1,15 +1,15 @@
 .block-amount {
 	padding: pxToRem( 24 );
 	border-radius: $roundBorderRadius;
-	background-color: $colorGreenLight;
+	background-color: $colorGray;
 
 	&.is-invalid {
-		background-color: $colorPink;
+		background-color: $colorRed;
 	}
 
 	&--subtotal {
-		padding: pxToRem( 36 ) pxToRem( 24 );
-		background-color: $colorGreenDark;
+		padding: pxToRem( 24 );
+		// background-color: $colorGreenDark;
 	}
 
 	&:not(:last-of-type) {
@@ -21,7 +21,9 @@
 		flex-direction: column;
 
 		&__text {
-			color: $colorTanNeutral;
+			@include headline;
+
+			color: $colorGrayLight;
 
 			&--subtotal {
 				font-size: pxToRem( 24 );
@@ -31,20 +33,20 @@
 
 	&__value {
 		font-family: $fontMono;
-		font-size: pxToRem( 45 );
+		font-size: pxToRem( 36 );
 		font-weight: 700;
 		background-color: transparent;
 		border: none;
-		color: $colorTan;
+		color: white;
 
 		&--subtotal {
-			font-size: pxToRem( 60 );
+			font-size: pxToRem( 48 );
 			outline: none;
 		}
 
 		&::placeholder {
 			font-family: $fontSans;
-			color: $colorTanDark;
+			color: $colorGrayLight;
 		}
 	}
 }
