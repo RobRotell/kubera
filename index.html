@@ -3,25 +3,40 @@
 
 <head>
 	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Kubera</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	<link rel="stylesheet" href="./src/scss/index.scss" />
+	<title>Kubera</title>
+	<meta name="description" content="Simple tip-calculating progressive web app." />
+
+	<link rel="icon" href="./public/favicon.ico" sizes="any" />
+	<link rel="icon" href="./public/logo.svg" type="image/svg+xml" />
+	<link rel="apple-touch-icon" href="./public/apple-touch-icon-180x180.png" />
+
+	<link rel="mask-icon" href="./public/logo.svg" color="#ffffff" />
+	<meta name="theme-color" content="#2d734a" />
+
+	<link rel="stylesheet" href="./src/scss/app.scss" />
 	<script type="module" src="./src/js/app.js"></script>
 </head>
 
 <body class="body">
 	<div class="app">
 		<header class="header">
-			<img src="" alt="Kubera Logo" class="logo" />
+			<svg class="logo" width="256" height="256" version="1.1" viewBox="0 0 67.733 67.733" xmlns="http://www.w3.org/2000/svg">
+				<g stroke-width="0">
+					<circle cx="33.867" cy="33.867" r="33.602" fill="#2d733a"/>
+					<g transform="translate(0 -1.5875)">
+						<circle transform="matrix(0,1,1,0,0,0)" cx="40.491" cy="33.867" r="8.5316" fill="#fff"/>
+						<circle transform="matrix(0,1,1,0,0,0)" cx="49.885" cy="33.867" r="6.4651" fill="#fff"/>
+						<circle transform="matrix(0,-1,-1,0,0,0)" cx="-27.213" cy="-33.867" r="12.655" fill="#fff"/>
+						<circle transform="matrix(0,1,1,0,0,0)" cx="27.213" cy="33.867" r="9.651" fill="#2d733a"/>
+					</g>
+				</g>
+			</svg>
 		</header>
 
 		<main id="kubera" class="kubera"></main>
 	</div>
-
-	<picture class="body__pic">
-		<img class="body__pic__img" src="./src/img/background.jpg" />
-	</picture>
 
 </body>
 

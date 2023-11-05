@@ -1,0 +1,192 @@
+@import 'node_modules/modern-normalize/modern-normalize.css';
+
+@import '_utils';
+@import '_variables';
+@import '_mixins';
+@import '_fonts';
+
+html,
+body {
+	height: 100vh;
+	font-family: $fontSans;
+	font-weight: $fontWeightNormal;
+	font-size: pxToRem(16);
+}
+
+.body {
+	display: flex;
+	place-items: center;
+	place-content: center;
+	padding: pxToRem(16);
+	background-color: $colorGrayDark;
+
+	&__pic {
+		position: absolute;
+		inset: 0;
+		display: block;
+		width: 100%;
+		height: 100%;
+		z-index: -100;
+
+		&__img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type='number'] {
+	-moz-appearance: textfield;
+	appearance: textfield;
+}
+
+.app {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	max-width: pxToRem(600);
+	max-height: pxToRem(1000);
+	padding: pxToRem(32);
+	border-radius: $roundBorderRadius;
+	background-color: #1A1A1A;
+	border: pxToRem(2) solid #333333;
+}
+
+.kubera {
+	display: flex;
+	flex-direction: column;
+	place-content: end;
+	margin-top: auto;
+}
+
+.header {
+	display: flex;
+	place-items: center;
+	place-content: center;
+	flex-grow: 1;
+	padding: pxToRem( 40 ) pxToRem( 90 );
+
+	.logo {
+		width: 100%;
+		height: 100%;
+		max-width: pxToRem( 160 );
+		max-height: pxToRem( 160 );
+	}
+}
+
+.block-amount {
+	padding: pxToRem(24);
+	border-radius: $roundBorderRadius;
+	background-color: $colorGray;
+
+	&.is-invalid {
+		background-color: $colorRed;
+	}
+
+	&--subtotal {
+		padding: pxToRem(24);
+		// background-color: $colorGreenDark;
+	}
+
+	&:not(:first-of-type) {
+		margin-bottom: pxToRem(24);
+	}
+
+	&__label {
+		display: flex;
+		flex-direction: column;
+
+		&__text {
+			@include headline;
+
+			color: $colorGrayLight;
+
+			&--subtotal {
+				font-size: pxToRem(24);
+			}
+		}
+	}
+
+	&__value {
+		font-family: $fontMono;
+		font-size: pxToRem(36);
+		font-weight: 700;
+		background-color: transparent;
+		border: none;
+		color: white;
+
+		&--subtotal {
+			font-size: pxToRem(48);
+			outline: none;
+		}
+
+		&::placeholder {
+			font-family: $fontSans;
+			color: $colorGrayLight;
+		}
+	}
+}
+
+.tip-percentages {
+	margin-top: pxToRem(24);
+	margin-bottom: pxToRem(24);
+
+	&__headline {
+		@include headline;
+		color: $colorGrayLight;
+	}
+
+	&__options {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		gap: pxToRem(16);
+	}
+
+	&__option {
+		display: flex;
+		flex: 1 0;
+		place-content: center;
+		place-items: center;
+		padding: pxToRem(24) pxToRem(6);
+		font-family: $fontMono;
+		background-color: $colorGreenDark;
+		border-radius: $roundBorderRadius;
+		border: none;
+		cursor: pointer;
+		transition: background-color 0.2s linear;
+
+		&__value,
+		&__input {
+			font-weight: $fontWeightBold;
+			font-size: pxToRem(24);
+			color: white;
+		}
+
+		&__input {
+			width: 100%;
+			text-align: center;
+			background-color: transparent;
+			outline: none;
+			border: none;
+			cursor: pointer;
+		}
+
+		&:hover,
+		&.is-selected {
+			background-color: $colorGreenLight;
+		}
+
+		&.is-invalid {
+			background-color: $colorRed;
+		}
+	}
+}
