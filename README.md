@@ -1,4 +1,4 @@
-<p style="text-align: center;">
+<p align="center" style="text-align: center;">
 	<a href="https://kubera.robr.app" target="_blank" rel="noopener noreferrer">
 		<img width="160" src="https://kubera.robr.app/logo.svg" alt="Kubera logo" />
 	</a>
