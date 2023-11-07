@@ -6,6 +6,9 @@ export default defineConfig({
 		VitePWA({
 			registerType: 'autoUpdate',
 			injectRegister: 'inline',
+			workbox: {
+				sourcemap: true,
+			},
 			manifest: {
 				name: 'Kubera',
 				short_name: 'Kubera',

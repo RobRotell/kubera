@@ -60,8 +60,14 @@ export class Kubera {
 			// apply tip amount to subtotal to get *total* total
 			const totalAmount = ( subtotal + tipAmount ).toFixed( 2 )
 
-			this.data.tipAmount = `$${tipAmount.toFixed( 2 )}`
-			this.data.totalAmount = `$${totalAmount}`
+			// eslint-disable-next-line no-undef
+			const formatter = new Intl.NumberFormat( 'en-US', {
+				style: 'currency',
+				currency: 'USD',
+			})
+
+			this.data.tipAmount = formatter.format( tipAmount )
+			this.data.totalAmount = formatter.format( totalAmount )
 		}
 	}
 
